@@ -1,7 +1,6 @@
 angular.module('myapp')
 .component('entry',{
-  // siraj : add scope and exists var
-  controller:function($scope) {
+  controller:function($scope){
     this.exists = false;
     var session=undefined;
     this.favorite=function(id,title,poster_path){
@@ -56,7 +55,6 @@ angular.module('myapp')
           url: "http://127.0.0.1:8080/add",
           type: "POST",
           data: obj,
-          // siraj/////////////////////////////////////
           error: (e) => {
             console.log('error in post to favourite ', e);
           },
@@ -72,39 +70,11 @@ angular.module('myapp')
               $scope.$apply();              
             }
           }
-          // siraj/////////////////////////////////////          
         });
       }
     }
-  }
-    // this.$onInit = function() {
-    //   $.ajax({
-    //     async:false,
-    //     url: "http://127.0.0.1:8080/movie-exists?" + this.movie._id,
-    //     cache: false,
-    //     error: function (w) {
-    //       console.error(w);
-    //     },
-    //     success: function(exists) {
-    //       if(exists==='y') {
-    //         console.log('----------------> exists');
-    //         this.exists = true;
-    //       }
-    //       else if(exists==='n') {
-    //         console.log('----------------> doesnt exists');
-    //         this.exists = false;
-    //       }
-    //       else {
-    //         console.log('what???');
-    //       }
-    //     }
-    //   });
-    // }    
-  },
-  ////////////siraj////////////////////////////////////////
   bindings:{
     movie:'<'
   },
   templateUrl:'public/templates/entry.html'
 });
-

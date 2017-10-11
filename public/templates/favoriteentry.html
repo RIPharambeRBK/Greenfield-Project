@@ -1,8 +1,11 @@
-<center ng-show="$ctrl.shown"> <div>
+
+<div style="background-color: black" >
+<center ng-show="$ctrl.shown" > 
+<div>
   <h3> <span></span> <span id="font" style="font-family: courier; color:#EA7117 ; font-weight: bold; font-size: 22px;">{{$ctrl.movie.title}}</span></h3>
   <div>
    <img class="img-rounded" src={{"http://image.tmdb.org/t/p/w185/"+$ctrl.movie.poster_path}} width="150" height="250" />
   </div>
-  <Button style="margin: 1%" ng-click="$ctrl.removeFromFavorite()">Remove</Button>
+  <Button class="btn btn-warning btn-md" style="margin: 1%" ng-click="$ctrl.removeFromFavorite()">Remove</Button>
 </center>
-
+</div>

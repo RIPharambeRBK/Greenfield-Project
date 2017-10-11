@@ -1,8 +1,13 @@
+
  <!DOCTYPE html>
 <html>
 <head>
-  <title> Sign Up </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script src="node_modules/angular/angular.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script async charset="utf-8"
   src="//cdn.iframe.ly/embed.js?api_key=..." 
   ></script>
@@ -16,14 +21,21 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+   
+  <h3 style="color: black">Harambe SignUP</h3>
+  </div>
+
+  
+  
 <body background="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/DcMIsso/small-black-footsteps-walking-on-white-background_skgtorm7x_thumbnail-full01.png">
-<h2><img src="https://images-eu.ssl-images-amazon.com/images/I/51dwvZ4---L.png" width="80px" height="80px">
-  </h2>
+
+
+
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li ><a href="http://127.0.0.1:8080/"> Home Page </a></li>
-        <!-- <li><a href="#"> Top Rated </a></li> -->
+        <li><a href="#"> Top Rated </a></li>
         <li ><a href="http://127.0.0.1:8080/favoritelist"> Favorite List </a></li>
 
       </ul>
@@ -33,26 +45,41 @@
       </ul>
     </div>
   </nav>
-  <form action="/signUp" method="post">
-     <center><div class="input-group col-lg-4">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input class="form-control" id="username" type="text" name="username" required="required" placeholder="User Name">
-      </div></center>
-       <br>
-        <br>
-      <center><div class="input-group col-lg-4">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-        <input id="password" type="password" class="form-control" name="password" required="required" placeholder="Password">
-      </div></center>
-      <br>
-      <br>
-     <center> <button type="submit" value="Sign Up" class="btn btn-warning">Sign Up</button>
-    </div></center>
-</form>
-<br>
-<center><p>
-  <a href="/login">Login to your account &rarr;</a>
-<p></center>
+ 
+ <div class="container1">
+      <form class="modal-content animate" action="/signup" method='post'>
+    <div class="imgcontainer ">
+   
+    <h3 style="color: black;"><strong>Sign up</strong></h3>
+    </div>
 
+    <div class="container" style="width:100%" >
+
+    <div>
+    <label style="color:   #99ff99"><b><strong>Username</strong></b></label>
+    <input  type="text" placeholder="Enter Username" name="username" class="form-control mr-sm-2" required  style="width:90%;font-weight: 900;background-color: white; color: black">
+    </div>
+    <div>
+    <label style="color:  #99ff99"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" class="form-control mr-sm-2" required style="width:90%;font-weight: 900;background-color: white; color: black">
+    </div>
+    </div>
+
+    <div class="container" style="background-color:#aaff80 ; width:100%">
+    <p>
+    <a href="/login" style="color: black"><strong> Login to your account </strong></a>
+    <p>
+    <button type="submit" style="margin-right:50px;color:white; float: left;" class="submitbtn">Sign Up</button>
+    <button type="button" class="cancelbtn"><a href="/index.html" style="color: white;">Cancel</a> </button>
+    </div>
+    </form>
+    </div>
+</div>
+
+
+  <!-- footer -->
+    <footer>
+    <p>&copy; 2017 Harambe.com<p>
+    </footer>
 </body>
 </html>

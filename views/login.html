@@ -3,6 +3,7 @@
 <head>
   <title> Login </title>
   <script src="node_modules/angular/angular.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script async charset="utf-8"
   src="//cdn.iframe.ly/embed.js?api_key=..." 
   ></script>
@@ -33,7 +34,7 @@
       </ul>
     </div>
   </nav>
-  <form action="/login" method="post">
+  <!-- <form action="/login" method="post">
       <center><div class="input-group col-lg-4">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
         <input class="form-control" id="username" type="text" name="username" required="required" placeholder="User Name">
@@ -49,12 +50,48 @@
       <div>
         <center><button type="submit" value="Login" class="btn btn-success"> Login </button></center>
     </div>
-    </form>
+    </form> 
+
     <br>
     <center><p>
       <a href="/signUp"> Sign Up &rarr;</a>
       <p>
-</center>
+</center> -->
+<!--  -->
 
+ 
+  <div class="container1">
+      <form class="modal-content animate" action="/login" method='post'>
+        <div class="imgcontainer">
+           
+            <h3 style="color:  black"><strong>Login</strong></h3>
+
+        </div>
+
+        <div class="container" style="width:100%">
+            <div>
+                <label style="color: #99ff99"><b><strong>Username</strong></b></label>
+                <input type="text" placeholder="Enter Username" class="form-control mr-sm-2"  name="username" required  style="width:90%;font-weight: 900;background-color: white; color: black">
+            </div>
+            <div>
+                <label style="color: #99ff99"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password"  class="form-control mr-sm-2"  name="password" required style="width:90%;font-weight: 900;background-color: white; color: black">
+            </div>
+        </div>
+
+        <div class="container" style="background-color:#aaff80 ; width:100%">
+            <p>
+                <a href="/signup" style="color: black"><strong>Create anew Account </strong></a>
+                <p>
+                    <button type="submit" style="margin-right:50px;float: left;color: white;" class="submitbtn">Login</button>
+                    <button type="button" class="cancelbtn"><a href="/index.html" style="color: white;">Cancel</a> </button>
+                </div>
+            </form>
+        </div>
+    </div>
+     <!-- footer -->
+    <footer>
+    <p>&copy; 2017 Harambe.com<p>
+    </footer>
 </body>
 </html>
