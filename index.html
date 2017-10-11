@@ -14,87 +14,117 @@
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 
-<body background="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/DcMIsso/small-black-footsteps-walking-on-white-background_skgtorm7x_thumbnail-full01.png">
-	<h2><img src="https://images-eu.ssl-images-amazon.com/images/I/51dwvZ4---L.png" width="80px" height="80px">
-	</h2>
-
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#"> Home Page </a></li>
-				<!-- <li><a href="#"> Top Rated </a></li> -->
-				<li><a href="http://127.0.0.1:8080/favoritelist"> Favorite List </a></li>
+	<!-- rrrr -->
+	<!-- thumbnail wrapped in a link -->
+	<a href="#img1">
+		<center> <img src="http://www.clipartbest.com/cliparts/9Tp/enR/9TpenRLTE.svg" height="70"> </center>
+	</a>
+	<!-- lightbox container hidden with CSS -->
+	<a href="#_" class="lightbox" id="img1">
+		<div id="videoModal" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="false" style="display: block;">
+			<div class="modal-header">
+				<button type="button" class="close full-height" data-dismiss="modal" aria-hidden="true">X</button>
 				
-				<!-- add new one for to watched list -->
-				<li><a href="http://127.0.0.1:8080/watchedlist"> Watched List </a></li>
-				
-				<li><search /></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/signUp"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
-
-				<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
-				<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> LogOut </a></li>
-			</ul>
-		</div>
-	</nav>
-	<!-- <> -->
-	<div class="container" style="width:100%;">  
-		<div id="myCarousel" class="carousel slide" data-ride="carousel" >
-			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
-			</ol>
-
-			<!-- Wrapper for slides -->
-			<center>
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="https://hdqwalls.com/wallpapers/2017-the-lego-batman-movie-wallpaper.jpg" alt="Los Angeles" style="width:80%;">
-				</div>
-
-				<div class="item">
-					<img src="http://www.theurbancult.com/wp-content/uploads/2017/01/cover.jpg" alt="Chicago" style="width:80%;">
-				</div>
-				<div class="item">
-					<img src="https://i.pinimg.com/originals/2c/ee/12/2cee12434b4fb8c0db28deba8c50abea.png" alt="New york" style="width:80%;">
-				</div>
-				<div class="item">
-					<img src="https://qzprod.files.wordpress.com/2017/08/dark-tower-bf4175_comp_v0262-1015_srgb_rv2_rgb-e15021275049221.jpg?quality=80&strip=all" alt="New york" style="width:80%;">
-				</div>
 			</div>
-			</center>
-
-			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<span class="sr-only">Next</span>
-			</a>
+			<div class="modal-body"><iframe width="870" height="489" src={{$ctrl.trailer_string}} frameborder="0" allowfullscreen=""></iframe></div>
+			<div class="modal-footer"></div>
 		</div>
-	</div>
+
+		<!-- rrrr-->
 
 
-	<!-- <> -->
-	<app ng-app='myapp' />
-	<script src="public/components/app.js"></script>
-	<script src="public/components/search.js"></script>
-	<script src="public/components/entry.js"></script>
-	<script src="public/components/list.js"></script>
-	<script src="public/components/trailer.js"></script>
-	<script src="public/components/rec.js"></script>
-	<script src="converter.js"></script>
 
-</body>
-</html>
+	</head>
+	<!-- background="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/DcMIsso/small-black-footsteps-walking-on-white-background_skgtorm7x_thumbnail-full01.png" -->
+	<body style="background-color: black;">
+
+		<!-- <head> welcome</head> -->
+		
+
+
+		<nav class="navbar navbar-inverse" style="background-color: #ff9900;">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					
+					<li class="active"><a href="#" > Home Page </a></li>
+					<!-- <li><a href="#"> Top Rated </a></li> -->
+					<li><a href="http://127.0.0.1:8080/favoritelist" style="color: black"> Favorite List </a></li>
+					<!-- add new one for to watched list -->
+					<li><a href="http://127.0.0.1:8080/watchedlist"> Watched List </a></li>
+					
+					<li><search /></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+					<li><a href="/signUp" style="color: black"><span class="glyphicon glyphicon-user" style="color: black"></span> Sign Up </a></li>
+
+					<li><a href="/login" style="color: black"><span class="glyphicon glyphicon-log-in" style="color: black"></span> Login </a></li>
+					<li><a href="/logout" style="color: black"><span class="glyphicon glyphicon-log-out" style="color: black"></span> LogOut </a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		
+		
+		<!-- Photo Grid -->
+		<style>
+
+	</style>
+
+
+	<div>
+		
+		<div class= "col-sm-9" > 
+			<div class="column">
+				<img  src="https://resizing.flixster.com/seUt8hrJfV2xN0vz965KMmJRWsU=/4608x3456/v1.bjsxNjM4MDtqOzE3NDYwOzEyMDA7NDYwODszNDU2" style="width:100%">	
+				<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTc5NTYwMF5BMl5BanBnXkFtZTgwMTc1NDg5MjE@._V1_UY1200_CR111,0,630,1200_AL_.jpg" style="width:100%">
+				<img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTY3ZTdmNzItNjY4NS00ZDY1LTg5MWMtZjBlNDZlNTU5OWFlXkEyXkFqcGdeQXVyNjU1ODA5MzU@._V1_UY1200_CR93,0,630,1200_AL_.jpg" style="width:100%">
+				
+
+				
+			</div>
+
+
+			<div class="column">
+				<img src="https://qzprod.files.wordpress.com/2017/06/faceoff.png?w=1432" style="width:100%">
+				<img src="https://qzprod.files.wordpress.com/2017/08/dark-tower-bf4175_comp_v0262-1015_srgb_rv2_rgb-e15021275049221.jpg?quality=80&strip=all" alt="New york" style="width:100%;">
+				<img src="https://s.yimg.com/uu/api/res/1.2/XyB6w0Db5Ttb1CU8VxRQeQ--/aD04ODY7dz0xMzI5O3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/cd/resizer/2.0/FIT_TO_WIDTH-w1329/d9bb4c8114501b1589494c39c18a4d6dcd3085e0.jpg" style="width:100%">
+				<img src="https://media.vanityfair.com/photos/567312be26c70c332ea295a4/master/w_900,c_limit/the-real-story-of-joy-joy-mangano-jennifer-lawrence-02.jpg" style="width:100%">
+				<img src="https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2015/11/08/16/Jennifer-Lawrence-American-Hustle.jpg" style="width:100%">
+				<img src="http://www.theurbancult.com/wp-content/uploads/2017/01/cover.jpg" style="width:100%">
+				<img src="http://img.youtube.com/vi/jbLZ2I6FLmg/hqdefault.jpg" style="width: 100%">
+				
+			</div>  
+
+
+
+			<div class="column">
+				<img src="https://qzprod.files.wordpress.com/2016/09/screen-shot-2016-09-09-at-10-18-22-am-e1473430782777.png?w=1158" style="width:100%">
+				<img src="http://www.atlantalockmasters.com/wp-content/uploads/2015/08/criminal1.jpg" style="width:100%">
+				<img src="https://i.pinimg.com/originals/2c/ee/12/2cee12434b4fb8c0db28deba8c50abea.png" alt="New york" style="width:100%;">
+				<img src="https://i.ytimg.com/vi/keIZmTg-nBI/maxresdefault.jpg" style="width:100%">
+				<img src="https://img.cinemablend.com/filter:scale/quill/0/a/5/b/c/e/0a5bce3afc02044343a0b08e887e1edb22122441.jpg?mw=600" style="width:100%">
+				<img src="https://img.cinemablend.com/filter:scale/quill/e/e/4/f/f/f/ee4fff99de8e821eab22ad5aa27d39c040ac36a1.jpg?mw=600" style="width:100%">
+				<img src="http://betweennapsontheporch.net/wp-content/uploads/2015/04/Real-House-in-Movie-Life-As-We-Know-It-Movie-Living-Room.jpg" style="width:100%">
+				<img src="http://static3.businessinsider.com/image/58d57f60d349f9d7038b6dbc-2000" style="width:100%">
+			</div>
+
+
+		</div>
+
+		<div class="col-sm-3">
+			<app ng-app='myapp' /></div>
+
+		</div>
+		<script src="public/components/app.js"></script>
+		<script src="public/components/search.js"></script>
+		<script src="public/components/entry.js"></script>
+		<script src="public/components/list.js"></script>
+		<script src="public/components/trailer.js"></script>
+		<script src="converter.js"></script>
+	</body>
+	</html>

@@ -3,5 +3,5 @@ angular.module('watched')
 	bindings:{
 		movie:'<'
 	},
-	templateUrl:'public/templates/watchentry.html'
+	templateUrl: 'public/templates/watchentry.html'
 })

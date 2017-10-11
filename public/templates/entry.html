@@ -7,12 +7,14 @@
 
       <br>
       <br>
-       
+      
       <button class="btn btn-warning btn-md" ng-click='$ctrl.favorite($ctrl.movie.id,$ctrl.movie.title,$ctrl.movie.poster_path)'> <span class="glyphicon glyphicon-star"></span> Favorite </button>
 
       <!-- add new button for the to watch list -> toWatch() from app -->
 
       <button class="btn btn-warning btn-md" ng-click='$ctrl.toWatch($ctrl.movie.id,$ctrl.movie.title,$ctrl.movie.poster_path)'> <span class="glyphicon glyphicon-star"></span> To watch </button>
+
+
 
       <h2> <span></span> <span style="color: #EA7117; font-weight: bold;">{{$ctrl.movie.title}}</span></h2>
     </div>
@@ -44,7 +46,6 @@
   </div>
   <br>
   <br>
-<div>{{$scope}}</div>
 </div>
 </div>
 
@@ -57,6 +58,3 @@
 };
 
 </style>
-
-
-

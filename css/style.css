@@ -1,0 +1,346 @@
+input[type=text], input[type=password] {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 8px 0;
+   display: inline-block;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+}
+
+
+
+   button:hover {
+       opacity: 0.8;
+   }
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.header {
+    text-align: center;
+    padding: 32px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+.column img {
+    margin-top: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 50%) {
+    .column {
+        width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (max-width: 100%) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+/*rrrrrrrrrrrrrrrrrrrrr*/
+
+
+/** Donna Galletta | LIGHTBOX MARKUP **/
+
+.lightbox {
+  /** Default lightbox to hidden */
+  display: none;
+
+  /** Position and style */
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+}
+.lightbox:target {
+  /** Remove default browser outline */
+  outline: none;
+
+  /** Unhide lightbox **/
+  display: block;
+}
+
+/** videoModal **/
+#videoModal {
+  border-radius: 0;
+  width: 870px;
+  margin:auto;}
+  #videoModal .modal-header {
+    background: #000;
+    border: 0;
+    color: #fff;
+    position: relative;
+      height:35px; }
+    #videoModal .modal-header h3 {
+      font-size: 18px;
+      line-height: 22px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:5px;}
+  #videoModal .modal-body {
+    height: 489px;
+    padding: 0;
+    max-height: none;
+    overflow: hidden; }
+  #videoModal .modal-footer:empty {
+    display: none !important; }
+  #videoModal .close {
+    background: #DB00B8;
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    text-shadow: none;
+    top: 0;
+    width: 38px; }
+
+/*rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr*/
+
+
+   /* Extra styles for the cancel button */
+   .cancelbtn {
+       float: right;
+       width: auto;
+       padding: 10px 18px;
+       background:  black ;
+       color: white;
+        border-radius: 25px;
+   }
+
+   .submitbtn {
+       width: auto;
+       padding: 10px 18px;
+       background:  black ;
+       color: white;
+        border-radius: 25px;
+   }
+
+  
+.imgcontainer {
+   text-align: center;
+   margin: 24px 0 12px 0;
+   position: relative;
+}
+
+img.avatar {
+   width: 40%;
+   border-radius: 50%;
+}
+
+.container {
+   padding: 16px;
+}
+
+span.psw {
+   float: right;
+   padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+   background-color: #fefefe ;
+   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+   border: 1px solid #888;
+   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+   position: absolute;
+   right: 25px;
+   top: 0;
+   color: #363333;
+   font-size: 35px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: red;
+   cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+   -webkit-animation: animatezoom 0.6s;
+   animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+   from {-webkit-transform: scale(0)}
+   to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+   from {transform: scale(0)}
+   to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+   span.psw {
+    display: block;
+    float: none;
+}
+.cancelbtn {
+    width: 100%;
+}
+}
+
+img:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s; 
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite; 
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+/*****************************************************************/
+
+body{
+   font-family: Arial,Helvtica,sans-serif;
+   font-size: 15px;
+   line-height: 1.5;
+   /* font: 15px/1.5 Arial,Helvtica,sans-serif;*/   /*the same of the above*/
+   padding: 0;
+   margin: 0;
+}
+
+/* Global */
+.container {
+   width: 80%;
+   margin: auto;
+   overflow: hidden;
+    background-color: #000d1a;
+
+   }
+   .container1 {
+
+       width: 100%;
+       margin-left: 0;
+       overflow: hidden;
+       background-color:   #00802b;*/
+   }
+    
+
+   ul{
+       margin: 0;
+       padding: 0;
+   }
+
+   /* Header */
+
+   header{
+       background: #35424a ;
+       color: #ffffff ;
+       padding-top: 30px;
+       border-bottom: #ff9900 3px solid ;
+   }
+   header a {
+       color: #ffffff ;
+       text-decoration: none;
+       /*text-transform: uppercase;*/
+       font-size: 16px;
+   }
+   header li {
+       float: left;
+       display: inline;
+       padding: 0 20px 0 20px ;  /*(top right bottom left)*/
+   }
+
+   header #branding {
+       float: left;
+   }
+
+   header #branding h1{
+       margin: 0;
+   }
+
+   header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight ,header .current a {
+   color: #ff9900 ;
+   font-weight: bold;
+}
+
+header a:hover{
+   color: #cccccc ;
+   font-weight: bold;
+}
+
+
+
+footer{
+   padding: 20px;
+   margin-top: 20px;
+   color: #E16428 ;
+   background-color: #363333 ;
+   text-align: center;
+   margin-bottom: 4px;
+}

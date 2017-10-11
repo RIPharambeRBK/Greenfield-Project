@@ -79,4 +79,3 @@ angular.module('myapp')
   },
   templateUrl:'public/templates/entry.html'
 });
-
