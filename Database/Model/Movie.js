@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var movieSchema = mongoose.Schema({
   id: Number,
   title: String,
-  poster_path: String
+  poster_path: String,
+  users: []
 });
 
 var Movie = mongoose.model('Movie', movieSchema);
