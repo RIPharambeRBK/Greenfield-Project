@@ -41,7 +41,6 @@ app.get('/session',function(req,res){
 app.post('/login', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-
   User.findOne({ username: username })
   .exec(function(err, user) {
     if (!user) {
@@ -57,29 +56,6 @@ app.post('/login', function(req, res) {
         console.log('Wrong Password .. Try Again');
       }
     }
-  });
-});
-
-
-
-app.post('/removeFromFav', (req, res) => {
-  if(req.session.username) {
-    var username = req.session.username;
-  }
-  else {
-    console.log('=========================> no username')
-  }
-  User.findOne({username: username}, (err, user) => {
-    if(err) {
-      console.log('=======================> error in find' + err);      
-    }
-    var index = user.movies.indexOf(req.body._id);
-    user.movies.splice(index,1);
-    User.findOneAndUpdate({username: username}, {movies: user.movies}, (err, newuser) => {
-      if(err) {
-        console.log('=======================> error in update ' + err);
-      }
-    });
   });
 });
 
@@ -210,87 +186,130 @@ app.get('/watched', function(req,res){
 })
 //................................................................................
 ///////////////////////////////////////////////////
+
 app.post('/removeFromFav', (req, res) => {
- if(req.session.username) {
-   var username = req.session.username;
- }
- else {
-   console.log('=========================> no username')
- }
- User.findOne({username: username}, (err, user) => {
-   if(err) {
-     console.log('=======================> error in find' + err);      
-   }
-   var index = user.movies.indexOf(req.body._id);
-   user.movies.splice(index,1);
-   User.findOneAndUpdate({username: username}, {movies: user.movies}, (err, newuser) => {
-     if(err) {
-       console.log('=======================> error in update ' + err);
-     }
-   });
- });
+  if(req.session.username) {
+    var username = req.session.username;
+  }
+  else {
+    console.log('=========================> no username')
+  }
+  User.findOne({username: username}, (err, user) => {
+    if(err) {
+      console.log('=======================> error in find' + err);      
+    }
+    var index = user.movies.indexOf(req.body._id);
+    user.movies.splice(index,1);
+    User.findOneAndUpdate({username: username}, {movies: user.movies}, (err, newuser) => {
+      if(err) {
+        console.log('=======================> error in update ' + err);
+      }
+    });
+  });
 });
+
 app.get('/movie-exists', (req, res) => {
- var id = req.url.split('?')[1];
- var username = req.session.username;
- User.find({username: username}, (err, user) => {
-   if(err) {
-     console.log('error in exists find ==========>', err);
-     throw err;
-   }
-   var index = user[0].movies.indexOf(id);
-   if(index>-1) {
-     res.end('exist');
-   }
-   else {
-     res.end('not');
-   }
- });
+  var id = req.url.split('?')[1];
+  var username = req.session.username;
+  User.find({username: username}, (err, user) => {
+    if(err) {
+      console.log('error in exists find ==========>', err);
+      throw err;
+    }
+    console.log('--------------------> ',user[0].movies.indexOf(id))
+    var index = user[0].movies.indexOf(id);
+    if(index>-1) {
+      res.status(200).end('y');
+    }
+    else {
+      res.status(200).end('n');
+    }
+  });
 });
 
 //////////////////////////////////////////////////
 
-//handling post request for movie data
-app.post('/add',function(req,res){
- 
-  if(req.session.username){ 
-  //prepare record 
-  var record = new Movie ({
-    id:req.body.id,
-    title:req.body.title,
-    poster_path:req.body.poster_path
-  });
-
-//add it to database
-record.save( function(error, newMovie){
+// handling 'post' req for adding to favorites
+app.post('/add',function(req,res) {
+  // 1- check if there's a user and reject the req if there isn't 
+  if(!req.session.username) {
+    res.redirect('/login');
+  }
+  // 2- now that we know the user exists, we initiate the process of saving to DB
   var username = req.session.username;
-  if(error){
-    throw error;
-  }
-
-  User.findOne({username: username} , function(err, user){
-    if (err)
-     console.log('error in find =========>', err)
-
-   user.movies.push(newMovie._id);
-    //  console.log('user in find =========>', user.movies)
-    User.findOneAndUpdate({username: username} ,{movies: user.movies},function(err , updated){
-      if(err)
-        console.log(err);
-      else{
-        // console.log('updated---------------> ',updated)
+  // 3- search first if the movie exists in the DB
+  Movie.findOne({id: req.body.id}, (noMovie, foundMovie) => {
+    // 3-1 if the movies doesn't exist, save it in the Movies table, then get the id of the saved movie and push it to the user movies array
+    if(!foundMovie) {
+      // saving the movie
+      var record = new Movie ({
+        id:req.body.id,
+        title:req.body.title,
+        poster_path:req.body.poster_path
+      });
+      record.users.push(username);
+      record.save((error, newMovie) => {
+        if(error) {
+          throw error;
+        }
+        console.log('new movieeeeeeeeeeeeeeee ', newMovie);
+        // get the user movie array
+        User.findOne({username: username} , (err, user) => {
+          if (!user)
+            console.log('error in movie save find user =========> ', err);
+          console.log('user ===========> ', user);
+          // editing the returned array before re-saving it in the DB
+          user.movies.push(newMovie._id);
+          console.log('array ===========> ', user.movies);
+          // resaving the updated array in the user
+          User.findOneAndUpdate({username: username} ,{movies: user.movies},function(err , updated) {
+            if(err)
+              console.log(err);
+            else
+              console.log('updated---------------> ', updated)
+          });
+        });
+      });
+      res.end('done');
+    }
+    // 3-2 else if the movie is found
+    // 3-2-1 check if the username is found in the array of users first
+    else {
+      // if it exists, no need to do anything
+      if(foundMovie.users.indexOf(username) > -1) {
+        res.end('exists');
       }
-    })
+      // if the user isn't in the user array, push it then update the movie document/entry
+      else {
+        console.log('found but not fooooooooooound');
+        foundMovie.users.push(username);
+        // console.log('new array =============> ', foundMovie.users);
+        // 
+        User.findOne({username: username} , (err, user) => {
+          if (!user)
+            console.log('error in movie save find user =========> ', err);
+          console.log('user ===========> ', user);
+          // editing the returned array before re-saving it in the DB
+          user.movies.push(foundMovie._id);
+          console.log('array ===========> ', user.movies);
+          // resaving the updated array in the user
+          User.findOneAndUpdate({username: username} ,{movies: user.movies},function(err , updated) {
+            if(err)
+              console.log(err);
+            else
+              console.log('updated---------------> ', updated)
+          });
+        });
+        Movie.findOneAndUpdate({id: req.body.id}, {users: foundMovie.users}, (err, newMovie) => {
+          if(!newMovie) {
+            console.log('error in movie update =========> ' + err);
+          }
+          console.log('updated movie')
+        });
+        res.end('done adding to user and movie');        
+      }
+    }
   });
-}); 
-// console.log('added')
-res.send('done');
-}
-  else // if the user not logged in
-  {
-    console.log ('>>>>>>>>>> rejected');
-    res.redirect('/login')
-  }
 });
 
 
@@ -337,7 +356,7 @@ app.get('/favorite', function(req,res){
     // console.log(user[0].movies);
     var favArr=[];
     for (var i=0;i<user[0].movies.length;i++) {
-      Movie.find({_id:user[0].movies[i]},function(err,result) {
+      Movie.find({_id: user[0].movies[i]},function(err,result) {
         if(err)
           throw err;
         // console.log('hiiiiiiiiiiii')

@@ -1,6 +1,8 @@
 angular.module('myapp')
 .component('entry',{
-  controller:function(){
+  // siraj : add scope and exists var
+  controller:function($scope) {
+    this.exists = false;
     var session=undefined;
     this.favorite=function(id,title,poster_path){
       //prepare object to send it to node server
@@ -54,24 +56,50 @@ angular.module('myapp')
           url: "http://127.0.0.1:8080/add",
           type: "POST",
           data: obj,
-          dataType: "html"
+          // siraj/////////////////////////////////////
+          error: (e) => {
+            console.log('error in post to favourite ', e);
+          },
+          success: (data) => {
+            if(data === 'exists') {
+              alert('User already have this movie in favorites');
+              this.exists = true;
+              $scope.$apply();
+            }
+            else {
+              alert('added to favorite');
+              this.exists = true;
+              $scope.$apply();              
+            }
+          }
+          // siraj/////////////////////////////////////          
         });
-        alert('added to favorite')
       }
     }
-    ///////////////////////////siraj/////////////////////
-    this.$onInit = function() {
-      $.ajax({
-        async:false,
-        url: "http://127.0.0.1:8080/movie-exists?" + this.movie._id,
-        cache: false,
-        dataType: 'json',
-        success: function(exists) {
-          if(exists)this.exists = exists;
-          console.log(exists);
-        }
-      });
-    }    
+  }
+    // this.$onInit = function() {
+    //   $.ajax({
+    //     async:false,
+    //     url: "http://127.0.0.1:8080/movie-exists?" + this.movie._id,
+    //     cache: false,
+    //     error: function (w) {
+    //       console.error(w);
+    //     },
+    //     success: function(exists) {
+    //       if(exists==='y') {
+    //         console.log('----------------> exists');
+    //         this.exists = true;
+    //       }
+    //       else if(exists==='n') {
+    //         console.log('----------------> doesnt exists');
+    //         this.exists = false;
+    //       }
+    //       else {
+    //         console.log('what???');
+    //       }
+    //     }
+    //   });
+    // }    
   },
   ////////////siraj////////////////////////////////////////
   bindings:{

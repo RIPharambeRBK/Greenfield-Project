@@ -4,11 +4,9 @@
       <a class="pull-left" href="#">   
         <img style= "margin-right: 40px; margin-left:30px" class="img-rounded" src={{"http://image.tmdb.org/t/p/w185/"+$ctrl.movie.poster_path}} width="300" height="500" />
       </a>
-
       <br>
       <br>
-       
-      <button class="btn btn-warning btn-md" ng-click='$ctrl.favorite($ctrl.movie.id,$ctrl.movie.title,$ctrl.movie.poster_path)'> <span class="glyphicon glyphicon-star"></span> Favorite </button>
+      <button class="btn btn-warning btn-md" ng-click='$ctrl.favorite($ctrl.movie.id,$ctrl.movie.title,$ctrl.movie.poster_path)' ng-disabled="$ctrl.exists"> <span class="glyphicon glyphicon-star"></span> Favorite </button>
 
       <!-- add new button for the to watch list -> toWatch() from app -->
 
