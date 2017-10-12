@@ -1,6 +1,7 @@
 angular.module('myapp')
 .component('entry',{
-  controller:function(){
+  controller:function($scope){
+    this.exists = false;
     var session=undefined;
     this.favorite=function(id,title,poster_path){
       //prepare object to send it to node server
@@ -46,7 +47,7 @@ angular.module('myapp')
 
     // we need to move this inside success of previous ajax request
     console.log(session)
-    if(session===undefined || session===null){
+    if(session===undefined || session===null) {
       alert('you are not allowed to add favorite')
     }else{
         //make ajax request to server to add it to database 
@@ -54,26 +55,25 @@ angular.module('myapp')
           url: "http://127.0.0.1:8080/add",
           type: "POST",
           data: obj,
-          dataType: "html"
+          error: (e) => {
+            console.log('error in post to favourite ', e);
+          },
+          success: (data) => {
+            if(data === 'exists') {
+              alert('User already have this movie in favorites');
+              this.exists = true;
+              $scope.$apply();
+            }
+            else {
+              alert('added to favorite');
+              this.exists = true;
+              $scope.$apply();              
+            }
+          }
         });
-        alert('added to favorite')
       }
     }
-    ///////////////////////////siraj/////////////////////
-    this.$onInit = function() {
-      $.ajax({
-        async:false,
-        url: "http://127.0.0.1:8080/movie-exists?" + this.movie._id,
-        cache: false,
-        dataType: 'json',
-        success: function(exists) {
-          if(exists)this.exists = exists;
-          console.log(exists);
-        }
-      });
-    }    
   },
-  ////////////siraj////////////////////////////////////////
   bindings:{
     movie:'<'
   },
