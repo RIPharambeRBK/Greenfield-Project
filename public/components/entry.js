@@ -1,11 +1,12 @@
+//............................................maisaa..........
 angular.module('myapp')
 .component('entry',{
   controller:function($scope){
     this.exists = false;
     var session=undefined;
-    this.favorite=function(id,title,poster_path){
+    this.favorite=function(id,title,poster_path,genre){
       //prepare object to send it to node server
-      var obj={id:id,title:title,poster_path:poster_path};
+      var obj={id:id,title:title,poster_path:poster_path,genre:genre};
       //checking for username
       $.ajax({
         async:false,
@@ -17,9 +18,9 @@ angular.module('myapp')
         }
       });
        //--------------------- add new function toWatch to create new list
-       this.toWatch=function(id,title,poster_path){
+       this.toWatch=function(id,title,poster_path,genre){
       //prepare object to send it to node server
-      var obj={id:id,title:title,poster_path:poster_path};
+      var obj={id:id,title:title,poster_path:poster_path,genre:genre};
       //checking for username
       $.ajax({
         async:false,
@@ -28,6 +29,7 @@ angular.module('myapp')
         dataType: 'json',
         success: function(user){
           session=user;
+
         }
       });
       console.log(session)
@@ -79,3 +81,4 @@ angular.module('myapp')
   },
   templateUrl:'public/templates/entry.html'
 });
+//............................................maisaa..........

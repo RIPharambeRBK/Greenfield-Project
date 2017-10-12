@@ -1,10 +1,22 @@
+
+<!-- .....................................................................maisaa -->
 <div style="background-color: black" class="row">
  	<favoriteentry class="col-lg-3"
  		movie="movie"
- 	 ng-repeat="movie in $ctrl.data" 
+ 	 ng-repeat="movie in $ctrl.data | filter: search" 
  	 />
  	 <!-- It's useful when we can loop over the whole movies came from database -->
  </div>
  
 
+<!-- filter by titel  -->
+<div ng-model = "search.$"><h4>sarche by titel</h4>
+	<input type="text" name="search" ng-model="search.title">
+</div>
 
+<!-- filter by genre  -->
+<!-- <div ng-model = "search.$"><h4>sarche by genre</h4>
+	<input type="text" name="search" ng-model="search.genre">
+</div> -->
+
+<!-- .....................................................................maisaa -->

@@ -1,6 +1,8 @@
+//............................................maisaa..........
 angular.module('favorite',[])
 .component('favoritelist',{
-	controller:function(){
+	controller:function($scope){
+
 		this.data=[];
 		var x=this;
 		$.ajax({
@@ -13,11 +15,18 @@ angular.module('favorite',[])
 				x.data=data
             }
         })
+
+        // this.sort = function(){
+        // 	this.data.sort(function(a,b){
+        // 		return a.title -b.title;
+        // 	})
+        // 	$scope.$apply();
+        // }
 	},
 	templateUrl:'public/templates/favoritelist.html'
 });
 
-
+//............................................maisaa..........
 
 
 

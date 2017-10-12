@@ -139,7 +139,7 @@ body {
        width: auto;
        padding: 10px 18px;
        background:  black ;
-       color: white;
+       color: #ff9900;
         border-radius: 25px;
    }
 
@@ -274,7 +274,7 @@ body{
    width: 80%;
    margin: auto;
    overflow: hidden;
-    background-color: #000d1a;
+    background-color: #ff9900;
 
    }
    .container1 {
@@ -282,7 +282,7 @@ body{
        width: 100%;
        margin-left: 0;
        overflow: hidden;
-       background-color:   #00802b;*/
+       background-color: black ;*/
    }
     
 
@@ -340,7 +340,8 @@ footer{
    padding: 20px;
    margin-top: 20px;
    color: #E16428 ;
-   background-color: #363333 ;
+   background-color: black ;
    text-align: center;
    margin-bottom: 4px;
 }
+

@@ -1,3 +1,4 @@
+//............................................maisaa..........
 angular.module('myapp',[])
 .component('app',{
 	controller:function(){ 
@@ -17,6 +18,7 @@ angular.module('myapp',[])
 				    	object.poster = "http://image.tmdb.org/t/p/w185/"+ body.results[i].poster_path
 				    	object.title = body.results[i].original_title
 				    	object.date = body.results[i].release_date
+				    	object.genre = body.results[i].genre
 				    	theaters.push(object)
 				    }
 				    x.list = theaters
@@ -103,3 +105,5 @@ angular.module('myapp',[])
 	},	
 	templateUrl:'public/templates/app.html'
 });
+
+//............................................maisaa..........
