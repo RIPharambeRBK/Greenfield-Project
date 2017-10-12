@@ -1,24 +1,26 @@
-<div>
-	<h2><span class="label label-default" style="font-family: courier; font-weight: normal"><font color="white">Welcome {{$ctrl.user}}</font></span><h2>
-	</div>
-	<div>
-		<search change='$ctrl.change'/>
-	</div>
-	<div>
-		<h1><font color="white">Now Showing In Theaters</font></h1>
-		<div style="float: left" ng-repeat="movie in $ctrl.list">
-			<div ><img src={{movie.poster}}></div>
-			<div >{{movie.title}}</div>
-			<div >{{movie.date}}</div>
-		</div>	
-	</div>
+<div style="position: relative; bottom:70px ;right:  30%">
+<h2><span class="label label-default" style="font-family: courier;background-color:#ff9900; font-weight: normal"><font color=#000000><strong>Welcome {{$ctrl.user}}</strong></font></span><h2>
+</div>
 
-	<div>
-		<list movie='$ctrl.movie' trailer='$ctrl.trailer' user="$ctrl.user" recomendedMovie="$ctrl.recomendedMovie"/>
-	</div>
-	
-	<div>
-		<img src={{$ctrl.recomendedMovie.poster}}>
-		<p>{{$ctrl.recomendedMovie.title}}</p>
-		<p>{{$ctrl.recomendedMovie.date}}</p>
-	</div>
+<div>
+	<search change='$ctrl.change'/>
+</div>
+
+<div style="position: relative; left:70%;bottom: 1150px ;width: 40%;" >
+	<h1><font size=5 color="white">Now Showing In Theaters</font></h1>
+	<div style="float: left" ng-repeat="movie in $ctrl.list">
+		<div ><img src={{movie.poster}} style="width:60%;"></div>
+		<div style="width: 120px; color:#fff2e6 ">{{movie.title}}</div>
+		<div style="width: 120px; color:#fff2e6 " >{{movie.date}}</div>
+	</div>	
+</div>
+
+<div>
+	<list movie='$ctrl.movie' trailer='$ctrl.trailer' user="$ctrl.user" recomendedMovie="$ctrl.recomendedMovie"/>
+</div>
+
+<div>
+	<img src={{$ctrl.recomendedMovie.poster}}>
+	<p>{{$ctrl.recomendedMovie.title}}</p>
+	<p>{{$ctrl.recomendedMovie.date}}</p>
+</div>
