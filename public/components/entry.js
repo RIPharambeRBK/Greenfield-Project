@@ -47,7 +47,7 @@ angular.module('myapp')
 
     // we need to move this inside success of previous ajax request
     console.log(session)
-    if(session===undefined || session===null){
+    if(session===undefined || session===null) {
       alert('you are not allowed to add favorite')
     }else{
         //make ajax request to server to add it to database 
@@ -73,6 +73,7 @@ angular.module('myapp')
         });
       }
     }
+  },
   bindings:{
     movie:'<'
   },

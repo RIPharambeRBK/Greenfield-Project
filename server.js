@@ -24,10 +24,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
 app.get('/', util.checkUser, function(req, res) {
   res.sendFile(__dirname+'/index.html');
-
 });
 
 app.get('/login', function(req, res) {
@@ -73,7 +71,6 @@ app.get('/signUp',function(req, res) {
 app.post('/signUp', function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-
   User.findOne({ username: username })
   .exec(function(err, user) {
     if (!user) {
@@ -100,7 +97,6 @@ app.post('/signUp', function(req, res) {
 //add new for watched list 
 //---1---handling post request for movie data
 app.post('/add2',function(req,res){
- 
   if(req.session.username){ 
   //prepare record 
   var record = new Movie ({
@@ -108,14 +104,12 @@ app.post('/add2',function(req,res){
     title:req.body.title,
     poster_path:req.body.poster_path
   });
-
 //add it to database
 record.save( function(error, newMovie){
   var username = req.session.username;
   if(error){
     throw error;
   }
-
   User.findOne({username: username} , function(err, user){
     if (err)
      console.log('error in find =========>', err)
@@ -188,12 +182,7 @@ app.get('/watched', function(req,res){
 ///////////////////////////////////////////////////
 
 app.post('/removeFromFav', (req, res) => {
-  if(req.session.username) {
-    var username = req.session.username;
-  }
-  else {
-    console.log('=========================> no username')
-  }
+  var username = req.session.username;
   User.findOne({username: username}, (err, user) => {
     if(err) {
       console.log('=======================> error in find' + err);      
@@ -204,6 +193,19 @@ app.post('/removeFromFav', (req, res) => {
       if(err) {
         console.log('=======================> error in update ' + err);
       }
+    });
+    Movie.findOne({title: req.body.title}, (noMovie, movie) => {
+      if(!movie) {
+        console.log('error in movie find inside delete ====>> ', noMovie)
+      }
+      console.log(movie);
+      var userIndex = movie.users.indexOf(username);
+      movie.users.splice(userIndex,1);
+      Movie.findOneAndUpdate({_id: req.body._id}, {users: movie.users}, (err, newMovie) => {
+        if(err) {
+          console.log('=======================> error in update ' + err);
+        }
+      });
     });
   });
 });
@@ -312,9 +314,6 @@ app.post('/add',function(req,res) {
   });
 });
 
-
-
-
 app.delete('/favorite', (req, res) => {
   var id = req.url.split('?')[1];
   var username = req.session.username;
@@ -347,7 +346,6 @@ app.get('/favoritelist',function(req,res){
     res.redirect('/login')
 });
 
-
 //fetch data from database
 app.get('/favorite', function(req,res){
   User.find({username: req.session.username}, function(err,user) {
@@ -371,50 +369,11 @@ app.get('/favorite', function(req,res){
         res.send(JSON.stringify(favArr))
       }, 500);
     
-  })
-  
-
-})
+  });
+});
 
 app.listen(port,function(err){
   console.log('connected');
 });
 
 module.exports = app;
-
-
-//trying the database
-
-// var Movie1 = new Movie ({ 
-//  id:13560 ,
-//  title:"Max", 
-//  release_date:"2002-09-10",
-//  popularity: '3.938836', 
-//  overview:
-//    "In 1918, a young, disillusioned Adolph Hitler strikes up a friendship with a Jewish art dealer while weighing a life of passion for art vs. talent at politics",
-//  vote_average: '6.2',
-//  vote_count: '39',
-//  poster_path: "/fzl48iRWkalx6c84lokVBoTQJjS.jpg" })
-
-
-// var User1 = new User ({
-//  id:1,
-//  username: "samya",
-//  password: "1234"})
-
-// movie1.save(function(error, result){
-//    if(error){
-//    throw error;
-//    }
-//    else{
-//    console.log("record added");
-//     }
-// });
-// User1.save(function(error, result){
-//    if(error){
-//    throw error;
-//    }
-//    else{
-//    console.log("record added");
-//     }
-// });
