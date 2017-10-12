@@ -1,3 +1,5 @@
+
+//............................................maisaa..........
 var request = require('request');
 var express=require('express');
 var bodyParser=require('body-parser');
@@ -247,7 +249,8 @@ app.post('/add',function(req,res) {
       var record = new Movie ({
         id:req.body.id,
         title:req.body.title,
-        poster_path:req.body.poster_path
+        poster_path:req.body.poster_path,
+        genre:req.body.genre
       });
       record.users.push(username);
       record.save((error, newMovie) => {
@@ -377,3 +380,4 @@ app.listen(port,function(err){
 });
 
 module.exports = app;
+//............................................maisaa..........

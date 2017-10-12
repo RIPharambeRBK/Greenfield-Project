@@ -8,6 +8,7 @@ var movieSchema = mongoose.Schema({
   id: Number,
   title: String,
   poster_path: String,
+  genre: {type:String ,default:"general"},
   users: []
 });
 
